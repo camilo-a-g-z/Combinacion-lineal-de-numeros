@@ -33,6 +33,7 @@ public class Grafico_mcd extends JFrame {
 	private JTextArea jLabel_resultado;
 	private JLabel jLabel_mcd;
 	private JScrollPane scrollPane_3;
+	private JTextArea jText_area_com;
 
 	/**
 	 * Launch the application.
@@ -56,7 +57,7 @@ public class Grafico_mcd extends JFrame {
 	public Grafico_mcd() {
 		//se define propiedades de la ventana
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 600);
+		setBounds(100, 100, 900, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -194,7 +195,7 @@ public class Grafico_mcd extends JFrame {
 				jText_area_1.setText("");
 				jText_area_2.setText("");
 				jText_area_3.setText("");
-				
+				jText_area_com.setText("");
 				calcular_mcd();
 			}
 			@Override
@@ -253,6 +254,15 @@ public class Grafico_mcd extends JFrame {
 		jLabel_resultado = new JTextArea("Combinación lineal");
 		scrollPane_3.setViewportView(jLabel_resultado);
 		jLabel_resultado.setEditable(false);
+		
+		JScrollPane scrollPane_4 = new JScrollPane();
+		scrollPane_4.setBounds(673, 101, 201, 340);
+		contentPane.add(scrollPane_4);
+		
+		jText_area_com = new JTextArea();
+		jText_area_com.setText("Proceso de combinacion lineal");
+		jText_area_com.setEditable(false);
+		scrollPane_4.setViewportView(jText_area_com);
 	}
 	void calcular_mcd() {
 		//variables necesarias para realizar combinacion
@@ -337,7 +347,8 @@ public class Grafico_mcd extends JFrame {
 	    }
 	    //mensaje
 	    jText_area_1.append("\nMCD obtenido de combinacion lineal: "+mcd_individual(arreglo[0],arreglo[1],0)+"\n");
-	    jText_area_1.append("\n"+mcd_individual(arreglo[0],arreglo[1],0)+"="+arreglo_aux[0]+"*("+variables[0]+")+"+arreglo_aux[1]+"*("+variables[1]+")");
+	    jText_area_1.append("\n\n"+mcd_individual(arreglo[0],arreglo[1],0)+"="+arreglo_aux[0]+"*("+variables[0]+")+"+arreglo_aux[1]+"*("+variables[1]+")");
+	    jText_area_com.append("\nPrimera combinacion entre los pirmeros numeros: "+arreglo_aux[0]+" y "+arreglo_aux[1]+"\n"+mcd_individual(arreglo[0],arreglo[1],0)+"="+arreglo_aux[0]+"*("+variables[0]+")+"+arreglo_aux[1]+"*("+variables[1]+")");
 	    //Se refrescan variables
 	    y1=1;
 	    y2=0;
@@ -392,6 +403,7 @@ public class Grafico_mcd extends JFrame {
 	    variables[3] =0;
 	    jText_area_2.append("\nMCD obtenido de combinacion lineal: "+mcd_individual(arreglo[0],arreglo[1],arreglo[2]));
 	    jText_area_2.append("\n"+mcd_individual(arreglo[0],arreglo[1],arreglo[2])+"="+arreglo_aux[0]+"*("+variables[0]+")+"+arreglo_aux[1]+"*("+variables[1]+")+"+arreglo_aux[2]+"*("+variables[2]+")");
+	    jText_area_com.append("\nSegunda combinacion entre los tres primeros numeros: "+arreglo_aux[0]+", "+arreglo_aux[1]+" y "+arreglo_aux[2]+"\n"+mcd_individual(arreglo[0],arreglo[1],arreglo[2])+"="+arreglo_aux[0]+"*("+variables[0]+")+"+arreglo_aux[1]+"*("+variables[1]+")+"+arreglo_aux[2]+"*("+variables[2]+")");
 	    //Se refrecan variables
 	    y1=1;
 	    y2=0;
@@ -472,6 +484,7 @@ public class Grafico_mcd extends JFrame {
 		}
 		jLabel_resultado.append("\n"+mcd+"="+arreglo_aux[0]+"*("+variables[0]+")+"+arreglo_aux[1]+"*("+variables[1]+")+"+arreglo_aux[2]+"*("+variables[2]+")+"+arreglo_aux[3]+"*("+variables[3]+")");
 		jLabel_mcd.setText("MCD: "+mcd);
+		jText_area_com.append("\nTercera combinacion entre todos los numeros: "+arreglo_aux[0]+", "+arreglo_aux[1]+", "+arreglo_aux[2]+" y "+arreglo_aux[3]+"\n"+mcd+"="+arreglo_aux[0]+"*("+variables[0]+")+"+arreglo_aux[1]+"*("+variables[1]+")+"+arreglo_aux[2]+"*("+variables[2]+")+"+arreglo_aux[3]+"*("+variables[3]+")");
 		
 	}
 	//funcion para calcular mcd 
